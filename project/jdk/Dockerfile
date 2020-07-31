@@ -6,6 +6,9 @@ RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
 ENV LC_ALL zh_CN.utf8
 RUN mkdir -p /opt/project /opt/logs
 ADD jre-8u202-linux-x64.tar.gz /usr/local/
+RUN yum -y install wqy-microhei-fonts wqy-zenhei-fonts
+RUN mkdir -p /usr/local/jre1.8.0_202/lib/fonts/fallback
+RUN ln -s /usr/share/fonts /usr/local/jre1.8.0_202/lib/fonts/fallback
 ENV JAVA_HOME /usr/local/jre1.8.0_202
 ENV CLASSPATH $JAVA_HOME/lib/dt.jar;$JAVA_HOME/lib/tools.jar
 ENV PATH $PATH:$JAVA_HOME/bin/
